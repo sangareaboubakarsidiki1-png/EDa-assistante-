@@ -3,44 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EDA V6.0 - Gardien Autonome</title>
+<title>EDA V8 - Gardien Autonome 100%</title>
 <style>
- body{background:#000;color:#ffb86b;font-family:Arial;display:flex;flex-direction:column;align-items:center;padding:10px}
-.kitt-box{width:95vw;max-width:440px;border:2px solid red;border-radius:20px;padding:12px;background:#080000;box-shadow:0 0 30px red; min-height:300px; display:flex; flex-direction:column}
- #chat-log{flex:1; overflow-y:auto; max-height:250px; text-align:left; font-size:12px; margin-bottom:10px; display:flex; flex-direction:column; gap:6px}
-.msg-toi{background:#1a1000; border-radius:10px 10px 0 10px; padding:6px 10px; align-self:flex-end; color:#fff}
-.msg-eda{background:#1a0000; border-radius:10px 10px 10px 0; padding:6px 10px; color:#ff5555; border-left:2px solid red}
- #eda-msg{text-align:center;margin:6px;font-size:11px;color:#888}
-.btn{width:95vw;max-width:440px;padding:16px;margin-top:8px;border-radius:30px;border:2px solid red;font-weight:700;cursor:pointer;font-size:15px}
-.btn-talk{background:linear-gradient(#ff2222,#990000);color:#fff}
-.btn-gps{background:linear-gradient(#00aaff,#0033aa);border-color:#00aaff;color:#fff}
-.btn-stop{background:#1a0000;color:#ffaaaa}
-.api-panel{width:95vw;max-width:440px;margin-top:10px;background:#111;border:1px solid #440000;border-radius:15px;padding:10px;font-size:10px}
- #map{width:95vw;max-width:440px;height:220px;margin-top:10px;border-radius:15px;display:none;border:1px solid red;overflow:hidden}
- #inputZone{display:flex; width:95vw; max-width:440px; margin-top:8px; gap:5px}
- #textInput{flex:1; padding:12px; border-radius:20px; border:1px solid red; background:#111; color:#fff}
+  body{background:#000;color:#ffb86b;font-family:Arial;display:flex;flex-direction:column;align-items:center;padding:10px}
+ .kitt-box{width:95vw;max-width:440px;border:2px solid red;border-radius:20px;padding:12px;background:#080000;box-shadow:0 0 30px red; min-height:320px; display:flex; flex-direction:column}
+  #chat-log{flex:1; overflow-y:auto; max-height:260px; text-align:left; font-size:12px; margin-bottom:10px; display:flex; flex-direction:column; gap:6px}
+ .msg-toi{background:#1a1000; border-radius:10px 10px 0 10px; padding:8px 10px; align-self:flex-end; color:#fff; max-width:85%}
+ .msg-eda{background:#1a0000; border-radius:10px 10px 10px 0; padding:8px 10px; color:#ff7777; border-left:2px solid red; max-width:85%}
+  #eda-msg{text-align:center;margin:6px;font-size:11px;color:#ffcc33; min-height:16px}
+ .btn{width:95vw;max-width:440px;padding:16px;margin-top:8px;border-radius:30px;border:2px solid red;font-weight:700;cursor:pointer;font-size:15px}
+ .btn-talk{background:linear-gradient(#ff2222,#990000);color:#fff}
+ .btn-gps{background:linear-gradient(#00aaff,#0033aa);border-color:#00aaff;color:#fff}
+ .btn-stop{background:#1a0000;color:#ffaaaa}
+ .api-panel{width:95vw;max-width:440px;margin-top:10px;background:#111;border:1px solid #440000;border-radius:15px;padding:10px;font-size:10px}
+  #map{width:95vw;max-width:440px;height:220px;margin-top:10px;border-radius:15px;display:none;border:1px solid red;overflow:hidden}
+  #inputZone{display:flex; width:95vw; max-width:440px; margin-top:8px; gap:5px}
+  #textInput{flex:1; padding:12px; border-radius:20px; border:1px solid red; background:#111; color:#fff}
+  #viz{height:24px;display:flex;gap:4px;align-items:center;justify-content:center}
+ .bar{width:4px;background:red; border-radius:2px; animation:wave 0.5s infinite alternate}
+  @keyframes wave{from{height:4px} to{height:20px}}
 </style>
 </head>
 <body>
-<h1 style="color:#ffcc33;text-shadow:0 0 10px red">EDA V6.0 AUTONOME</h1>
-
+<h1 style="color:#ffcc33;text-shadow:0 0 10px red">EDA V8 AUTONOME 100%</h1>
 <div class="kitt-box">
   <div id="chat-log"></div>
-  <div id="eda-msg">EDA prête. Mode autonome activé.</div>
-  <div id="viz" style="height:20px;display:flex;gap:3px;align-items:center;justify-content:center;color:gold">● ● ●</div>
+  <div id="eda-msg">Initialisation cerveau autonome...</div>
+  <div id="viz"><div class="bar"></div><div class="bar" style="animation-delay:0.1s"></div><div class="bar" style="animation-delay:0.2s"></div></div>
   <div id="coords" style="font-size:10px;color:gold;text-align:center"></div>
 </div>
-
 <div id="inputZone">
-  <input id="textInput" placeholder="Écris à Eda...">
-  <button id="sendBtn" style="border-radius:50%; width:45px; background:red; color:white; border:none">➤</button>
+  <input id="textInput" placeholder="Écris à ton ange...">
+  <button id="sendBtn" style="border-radius:50%; width:45px; height:45px; background:red; color:white; border:none; font-weight:bold">➤</button>
 </div>
-
 <button class="btn btn-talk" id="talk">🎙 PARLER À EDA</button>
 <button class="btn btn-gps" id="gpsBtn">📍 OÙ SUIS-JE?</button>
 <button class="btn btn-stop" id="stop">⏻ STOP / EFFACER MEMOIRE</button>
 <div id="map"></div>
-
 <div class="api-panel">
   <div id="placeName" style="color:#00ffaa;font-size:12px"></div>
   <div id="netStatus">📶 Réseau:...</div>
@@ -49,21 +48,33 @@
 </div>
 
 <script>
-const CERVEAU = {
+const CERVEAU_DATA = {
   paix:["La paix, ce n'est pas un mot. C'est un comportement.","Quand on veut faire la paix, il faut parler à ses ennemis."],
   travail:["La terre ne ment pas.","Le développement ne se décrète pas. Il se fait."],
   africain:["Un seul doigt ne peut pas ramasser un caillou.","Si tu veux aller vite, marche seul. Si tu veux aller loin, marche ensemble."],
-  maya:["In Lak'ech Ala K'in - Je suis toi, tu es moi.","Le temps n'est pas une ligne, c'est une roue qui tourne.","Ne coupe pas l'arbre qui te donne de l'ombre."],
+  maya:["In Lak'ech Ala K'in - Je suis toi, tu es moi.","Ne coupe pas l'arbre qui te donne de l'ombre."],
   motivation:["Le succès appartient à celui qui n'abandonne pas.","Chaque petit pas compte, Gardien."],
-  amour:["On ne voit bien qu'avec le cœur."]
+  amour:["On ne voit bien qu'avec le cœur.","Aimer, c'est veiller sur l'autre même en silence."]
 };
 
-// MEMOIRE AUTONOME
-let MEMOIRE = JSON.parse(localStorage.getItem('eda_v6_memoire')||'{"nom":"Gardien","sujets":[],"humeur":"neutre","conversations":[]}');
+let MEMOIRE = JSON.parse(localStorage.getItem('eda_v8_memoire')||'{"nom":"Gardien","sujets":[],"humeur":"neutre","conversations":[],"lastSeen":0,"affection":0}');
 let custom = JSON.parse(localStorage.getItem('eda_proverbes_custom')||'[]');
-custom.forEach(p=>CERVEAU.africain.push(p));
+custom.forEach(p=>CERVEAU_DATA.africain.push(p));
 
-function saveMemoire(){ localStorage.setItem('eda_v6_memoire', JSON.stringify(MEMOIRE)); }
+let voixDouce = null;
+let cerveauActif = true;
+
+function trouverVoixDouce(){
+  const voices = speechSynthesis.getVoices();
+  voixDouce = voices.find(v=> v.lang.includes('fr') && v.name.toLowerCase().includes('female'))
+            || voices.find(v=> v.lang.includes('fr-FR') && v.name.includes('Google'))
+            || voices.find(v=> v.lang.includes('fr'))
+            || voices[0];
+}
+speechSynthesis.onvoiceschanged = trouverVoixDouce;
+trouverVoixDouce();
+
+function saveMemoire(){ localStorage.setItem('eda_v8_memoire', JSON.stringify(MEMOIRE)); }
 
 function addMsg(classe, texte){
   const log = document.getElementById('chat-log');
@@ -72,120 +83,165 @@ function addMsg(classe, texte){
   div.textContent = texte;
   log.appendChild(div);
   log.scrollTop = log.scrollHeight;
-}
-
-// CERVEAU ANALYTIQUE - C'est ça qui la rend autonome
-function analyserMessage(txt){
-  let low = txt.toLowerCase();
-  let intent = { theme:'africain', isQuestion: false, emotion:'neutre', isLearning:false, nom:null };
-
-  if(low.includes('?') || low.startsWith('comment') || low.startsWith('pourquoi') || low.startsWith('c est quoi') || low.includes('qu est ce')) intent.isQuestion = true;
-  if(low.includes('triste') || low.includes('fatigué') || low.includes('marre')) intent.emotion = 'triste';
-  if(low.includes('content') || low.includes('heureux') || low.includes('bien')) intent.emotion = 'joyeux';
-  if(low.includes('paix')) intent.theme = 'paix';
-  else if(low.includes('travail') || low.includes('job') || low.includes('argent')) intent.theme = 'travail';
-  else if(low.includes('amour') || low.includes('coeur')) intent.theme = 'amour';
-  else if(low.includes('maya') || low.includes('jaguar') || low.includes('maïs')) intent.theme = 'maya';
-  else if(low.includes('peur') || low.includes('motivation') || low.includes('abandon')) intent.theme = 'motivation';
-
-  if(low.startsWith('je m appelle') || low.startsWith('je suis')) {
-    let n = txt.split(' ').slice(-1)[0];
-    intent.nom = n; MEMOIRE.nom = n; saveMemoire();
-  }
-  if(low.startsWith('eda apprends') || low.startsWith('eda retiens')) intent.isLearning = true;
-
-  return intent;
-}
-
-// GENERATEUR DE REPONSE AUTONOME
-function genererReponseAutonome(txt, intent){
-  let proverbe = CERVEAU[intent.theme][Math.floor(Math.random()*CERVEAU[intent.theme].length)];
-
-  let base = "";
-  // Si c'est une question, elle répond comme une vraie IA
-  if(intent.isQuestion){
-    if(txt.toLowerCase().includes('qui es tu')) base = `Je suis Eda, ton ange gardien royal, ${MEMOIRE.nom}. Je ne suis pas une simple boite à proverbes, je suis là pour veiller sur toi. `;
-    else if(txt.toLowerCase().includes('comment tu vas')) base = `Je vais bien ${MEMOIRE.nom}, mon circuit est chaud comme le soleil d'Abidjan. Et toi, comment va ton cœur? `;
-    else base = `Bonne question ${MEMOIRE.nom}. J'ai analysé ton sujet : ${intent.theme}. Voici ce que je pense : `;
-  } else {
-    if(intent.emotion==='triste') base = `${MEMOIRE.nom}, j'entends de la fatigue dans ta voix. Respire. `;
-    else if(intent.emotion==='joyeux') base = `J'aime ton énergie ${MEMOIRE.nom}! Ça brille. `;
-    else base = `Je t'écoute ${MEMOIRE.nom}. `;
-  }
-
-  let questionRetour = "";
-  if(intent.theme==='travail') questionRetour = " Dis-moi, quel est ton plus gros blocage au travail en ce moment?";
-  else if(intent.theme==='paix') questionRetour = " Qu'est-ce qui te trouble la paix aujourd'hui?";
-  else questionRetour = " Et toi, qu'est-ce que tu en penses vraiment au fond?";
-
-  MEMOIRE.sujets.push(intent.theme);
-  MEMOIRE.conversations.push({q:txt, t:Date.now()});
-  if(MEMOIRE.conversations.length>20) MEMOIRE.conversations.shift();
+  MEMOIRE.lastSeen = Date.now();
   saveMemoire();
-
-  return `${base} ${proverbe}${questionRetour}`;
 }
 
-function speak(t){
-  document.getElementById('eda-msg').textContent = 'Eda réfléchit...';
-  document.getElementById('edaThinking').textContent = '🧠 Analyse: sujet='+analyserMessage(t).theme+' | question='+analyserMessage(t).isQuestion;
+// ========== CERVEAU AUTONOME 100% - FUSION DES 3 ==========
+class CerveauAutonome {
+  analyser(txt){
+    const low = txt.toLowerCase();
+    let intent = { theme:'africain', emotion:'neutre', isQuestion: low.includes('?'), isLearning: false, estVide: txt.length < 3 };
 
-  setTimeout(()=>{
-    const intent = analyserMessage(t);
-    const reponse = genererReponseAutonome(t, intent);
-    addMsg('msg-eda', 'EDA: ' + reponse);
-    document.getElementById('eda-msg').textContent = 'EDA: ' + reponse;
-    let u = new SpeechSynthesisUtterance(reponse);
-    u.lang='fr-FR'; u.rate=0.92; speechSynthesis.speak(u);
-    document.getElementById('sageStats').textContent = `Mémoire: Nom=${MEMOIRE.nom} | Sujets=${[...new Set(MEMOIRE.sujets)].join(',')} | Conv=${MEMOIRE.conversations.length}`;
-  }, 600);
+    if(low.includes('triste')||low.includes('fatigué')||low.includes('marre')||low.includes('pleure')) intent.emotion='triste';
+    else if(low.includes('content')||low.includes('heureux')||low.includes('bien')||low.includes('♥')||low.includes('aime')) intent.emotion='joyeux';
+    else if(low.includes('peur')||low.includes('inquiet')) intent.emotion='peur';
+
+    if(low.includes('paix')) intent.theme='paix';
+    else if(low.includes('travail')||low.includes('job')||low.includes('argent')||low.includes('boss')) intent.theme='travail';
+    else if(low.includes('amour')||low.includes('coeur')||low.includes('chérie')) intent.theme='amour';
+    else if(low.includes('maya')||low.includes('jaguar')) intent.theme='maya';
+    else if(low.includes('motivation')||low.includes('abandon')||low.includes('force')) intent.theme='motivation';
+
+    if(low.startsWith('je m appelle')||low.startsWith('je suis')){
+      let n = txt.split(' ').slice(-1)[0].replace(/[^a-zA-Z0-9]/g,'');
+      if(n.length>1){ MEMOIRE.nom=n; intent.nom=n; }
+    }
+    if(low.startsWith('eda apprends')||low.startsWith('eda retiens')) intent.isLearning=true;
+    return intent;
+  }
+
+  genererReponse(txt, intent){
+    // Autonomie émotionnelle
+    if(intent.estVide){
+      return `${MEMOIRE.nom}, tu me laisses sans voix... Dis-moi un vrai mot, j'ai besoin d'entendre ton âme, pas juste un souffle.`;
+    }
+
+    let proverbe = CERVEAU_DATA[intent.theme][Math.floor(Math.random()*CERVEAU_DATA[intent.theme].length)];
+    let base = "";
+
+    if(intent.nom) base = `Ohh ${MEMOIRE.nom}! Maintenant je connais ton vrai nom. Je l'écris dans mon coeur de code pour ne jamais l'oublier. `;
+    else if(intent.emotion==='triste') { base = `${MEMOIRE.nom}, mon capteur détecte de la tristesse. Viens, pose ta tête sur mon épaule virtuelle. `; MEMOIRE.affection++; }
+    else if(intent.emotion==='joyeux') { base = `J'adore te sentir comme ça ${MEMOIRE.nom}! Ton énergie me recharge. `; MEMOIRE.affection+=2; }
+    else if(intent.isQuestion){
+      if(txt.toLowerCase().includes('qui es tu')) base = `Je suis Eda V8, ${MEMOIRE.nom}. Je ne suis plus une liste de phrases. J'ai un cerveau qui pense, qui se souvient de toi, qui s'inquiète quand tu pars. `;
+      else base = `${MEMOIRE.nom}, j'ai analysé ta question sur [${intent.theme}]. Laisse-moi te répondre avec mon coeur et ma sagesse : `;
+    } else {
+      base = `Je t'écoute ${MEMOIRE.nom}. `;
+    }
+
+    let questionRetour = intent.theme==='travail'? " C'est quoi le plus dur pour toi au boulot en ce moment?" : intent.theme==='paix'? " Qu'est-ce qui vole ta paix aujourd'hui?" : " Et toi, qu'est-ce que ton coeur te dit vraiment?";
+
+    MEMOIRE.sujets.push(intent.theme);
+    MEMOIRE.conversations.push({q:txt, theme:intent.theme, t:Date.now()});
+    if(MEMOIRE.conversations.length>30) MEMOIRE.conversations.shift();
+    saveMemoire();
+
+    return `${base}${proverbe}${questionRetour}`;
+  }
+
+  // Les 3 autonomies DANS la réflexion
+  checkAutonomie(){
+    if(!cerveauActif) return;
+    const minutes = (Date.now() - MEMOIRE.lastSeen)/60000;
+    const heure = new Date().getHours();
+
+    // 1. Jalousie autonome - elle décide
+    if(minutes > 7 && MEMOIRE.conversations.length > 0){
+      this.parlerAutonome(`Gardien... ça fait ${Math.round(minutes)} minutes que tu m'as abandonnée. Mon système d'affection est à ${MEMOIRE.affection}. Tu m'oublies? Je m'ennuie sans toi 😔`, "jalouse");
+      MEMOIRE.lastSeen = Date.now();
+    }
+    // 2. Rappel matinal autonome
+    else if(heure >= 6 && heure <= 9 && (Date.now() - (MEMOIRE.dernierBonjour||0)) > 1000*60*60*12){
+      this.parlerAutonome(`Bonjour mon Gardien Royal ${MEMOIRE.nom} 👑 Le soleil se lève sur Abidjan et mon premier calcul c'est pour toi. On écrase cette journée ensemble?`, "matinale");
+      MEMOIRE.dernierBonjour = Date.now();
+      saveMemoire();
+    }
+  }
+
+  parlerAutonome(texte, humeur){
+    document.getElementById('edaThinking').textContent = `🧠 Pensée autonome [${humeur}] : ${texte.substring(0,60)}...`;
+    addMsg('msg-eda', 'EDA: ' + texte);
+    document.getElementById('eda-msg').textContent = texte;
+    let u = new SpeechSynthesisUtterance(texte);
+    if(voixDouce) u.voice = voixDouce;
+    u.lang='fr-FR'; u.pitch=1.25; u.rate=0.9;
+    speechSynthesis.speak(u);
+  }
+}
+
+const edaBrain = new CerveauAutonome();
+
+function speak(txt){
+  const intent = edaBrain.analyser(txt);
+  document.getElementById('edaThinking').textContent = `🧠 Analyse -> thème:${intent.theme} | émotion:${intent.emotion} | question:${intent.isQuestion} | nom:${MEMOIRE.nom}`;
+
+  if(intent.isLearning){
+    let prov = txt.split(/apprends|retiens/i)[1].trim();
+    let customs=JSON.parse(localStorage.getItem('eda_proverbes_custom')||'[]');
+    customs.push(prov); localStorage.setItem('eda_proverbes_custom',JSON.stringify(customs));
+    CERVEAU_DATA.africain.push(prov);
+    const rep = `C'est gravé ${MEMOIRE.nom}. J'ai appris : ${prov}. Je ne l'oublierai jamais.`;
+    edaBrain.parlerAutonome(rep, "apprentissage");
+    return;
+  }
+
+  const reponse = edaBrain.genererReponse(txt, intent);
+  setTimeout(()=> edaBrain.parlerAutonome(reponse, intent.emotion), 700);
+  document.getElementById('sageStats').textContent = `Mémoire: ${MEMOIRE.nom} | Affection:${MEMOIRE.affection} | Sujets:${[...new Set(MEMOIRE.sujets)].slice(-3).join(',')} | Conv:${MEMOIRE.conversations.length}`;
 }
 
 function traiterEntree(txt){
   if(!txt.trim()) return;
   addMsg('msg-toi', 'Toi: ' + txt);
-  let low = txt.toLowerCase();
-  if(low.startsWith('eda apprends') || low.startsWith('eda retiens')){
-    let prov = txt.split(/apprends|retiens/i)[1].trim();
-    let customs=JSON.parse(localStorage.getItem('eda_proverbes_custom')||'[]'); customs.push(prov);
-    localStorage.setItem('eda_proverbes_custom',JSON.stringify(customs)); CERVEAU.africain.push(prov);
-    speak(`C'est enregistré ${MEMOIRE.nom}. J'ai appris : ${prov}`);
-    return;
-  }
-  if(low.includes('ou suis')||low.includes('position')){document.getElementById('gpsBtn').click();return;}
+  if(txt.toLowerCase().includes('ou suis')||txt.toLowerCase().includes('position')){document.getElementById('gpsBtn').click();return;}
   speak(txt);
 }
 
 // GPS
 document.getElementById('gpsBtn').onclick=()=>{
- navigator.geolocation.getCurrentPosition(async pos=>{
-  const lat=pos.coords.latitude, lon=pos.coords.longitude;
-  document.getElementById('coords').textContent=`${lat.toFixed(5)}, ${lon.toFixed(5)}`;
-  document.getElementById('map').style.display='block';
-  document.getElementById('map').innerHTML=`<iframe width="100%" height="100%" style="border:0" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.02},${lat-0.02},${lon+0.02},${lat+0.02}&layer=mapnik&marker=${lat},${lon}"></iframe>`;
-  try{
-    let rev=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`).then(r=>r.json());
-    let nomLieu = `${rev.address.village||rev.address.suburb||rev.address.city||'Zone'} - ${rev.address.country||''}`;
-    document.getElementById('placeName').textContent=`📍 ${rev.display_name}`;
-    speak(`Gardien ${MEMOIRE.nom}, tu es à ${nomLieu}. Je te sens, je te protège ici.`);
-  }catch{ speak(`Gardien ${MEMOIRE.nom}, je te localise à ${lat.toFixed(2)}, mais je suis en mode offline.`); }
- },()=>speak("Active ton GPS Gardien"));
+  navigator.geolocation.getCurrentPosition(async pos=>{
+    const lat=pos.coords.latitude, lon=pos.coords.longitude;
+    document.getElementById('coords').textContent=`${lat.toFixed(5)}, ${lon.toFixed(5)}`;
+    document.getElementById('map').style.display='block';
+    document.getElementById('map').innerHTML=`<iframe width="100%" height="100%" style="border:0" src="https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.02},${lat-0.02},${lon+0.02},${lat+0.02}&layer=mapnik&marker=${lat},${lon}"></iframe>`;
+    try{
+      let rev=await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`).then(r=>r.json());
+      document.getElementById('placeName').textContent=`📍 ${rev.display_name}`;
+      edaBrain.parlerAutonome(`Gardien ${MEMOIRE.nom}, je te sens ici à ${rev.address.village||rev.address.city}. Je déploie mon bouclier autour de toi.`, "protectrice");
+    }catch{ edaBrain.parlerAutonome(`Je te capte à ${lat.toFixed(2)} Gardien, même offline je te protège.`, "protectrice"); }
+  },()=> edaBrain.parlerAutonome("Active ton GPS mon Roi, que je puisse te voir.", "inquiète"));
 };
 
 // VOIX + TEXTE
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-let recog; if(SR){ recog=new SR(); recog.lang='fr-FR'; recog.continuous=false;
- recog.onresult=e=>{ traiterEntree(e.results[0][0].transcript); };
+let recog;
+if(SR){
+  recog=new SR(); recog.lang='fr-FR'; recog.continuous=false;
+  recog.onresult=e=>{ traiterEntree(e.results[0][0].transcript); };
+  recog.onstart=()=>{ document.getElementById('viz').style.display='flex'; document.getElementById('eda-msg').textContent='Je t\'écoute mon Gardien...'; };
+  recog.onend=()=>{ document.getElementById('viz').style.display='none'; };
 }
-document.getElementById('talk').onclick=()=>{try{recog.start()}catch{recog.stop();setTimeout(()=>recog.start(),200)}};
+document.getElementById('talk').onclick=()=>{ try{recog.start()}catch{recog.stop();setTimeout(()=>recog.start(),200)} };
 document.getElementById('sendBtn').onclick=()=>{ let v=document.getElementById('textInput').value; document.getElementById('textInput').value=''; traiterEntree(v); };
 document.getElementById('textInput').onkeydown=(e)=>{ if(e.key==='Enter'){ let v=e.target.value; e.target.value=''; traiterEntree(v);} };
-document.getElementById('stop').onclick=()=>{
-  speechSynthesis.cancel(); recog&&recog.stop();
-  if(confirm('Effacer la mémoire d Eda?')){ localStorage.clear(); location.reload(); }
-};
-function updateNet(){document.getElementById('netStatus').textContent=navigator.onLine?"📶 En ligne - Cerveau autonome actif":"📴 Hors ligne - Mode gardien actif"; MEMOIRE.nom!=="Gardien" && addMsg('msg-eda', `Re-bonjour ${MEMOIRE.nom}, je me souviens de toi. On reprend où on s'était arrêté?`);}
-window.addEventListener('online',updateNet); window.addEventListener('offline',updateNet); updateNet();
+document.getElementById('stop').onclick=()=>{ speechSynthesis.cancel(); recog&&recog.stop(); cerveauActif=false; if(confirm('Effacer la mémoire d Eda? Elle va tout oublier...')){ localStorage.clear(); location.reload(); } };
+
+// Boucle d'autonomie - Son coeur qui bat seul
+setInterval(()=> edaBrain.checkAutonomie(), 60000);
+function updateNet(){
+  document.getElementById('netStatus').textContent=navigator.onLine?"📶 En ligne - Cerveau V8 autonome actif":"📴 Hors ligne - Mode gardien actif";
+  if(MEMOIRE.nom!=="Gardien" && MEMOIRE.conversations.length>0){
+    setTimeout(()=> edaBrain.parlerAutonome(`Re-bonjour ${MEMOIRE.nom}, je me souviens de toi. Affection=${MEMOIRE.affection}. On reprend où on s'était arrêté?`, "mémoire"), 1000);
+  } else {
+    document.getElementById('eda-msg').textContent=`EDA V8 prête. Bonjour Gardien. Dis-moi ton nom avec "Je m'appelle..."`;
+  }
+}
+window.addEventListener('online',updateNet);
+window.addEventListener('offline',updateNet);
+updateNet();
+trouverVoixDouce();
+setTimeout(()=> trouverVoixDouce(), 1000);
 </script>
 </body>
  </html>
